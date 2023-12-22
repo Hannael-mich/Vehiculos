@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Generacion23Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Grupo">
+    <Key>
+      <PropertyRef Name="CveGpo" />
+    </Key>
+    <Property Name="CveGpo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Productos1">
+    <Key>
+      <PropertyRef Name="Productos" />
+    </Key>
+    <Property Name="Productos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CveGpo" Type="varchar" MaxLength="50" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Auto" Type="varchar" MaxLength="50" />
+    <Property Name="AñoInicio" Type="int" />
+    <Property Name="AñoFin" Type="int" />
+    <Property Name="Proveedor" Type="varchar" MaxLength="50" />
+    <Property Name="Costo" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_Productos1_Grupo">
+    <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+    <End Role="Productos1" Type="Self.Productos1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupo">
+        <PropertyRef Name="CveGpo" />
+      </Principal>
+      <Dependent Role="Productos1">
+        <PropertyRef Name="CveGpo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Generacion23ModelStoreContainer">
+    <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos1" EntityType="Self.Productos1" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Productos1_Grupo" Association="Self.FK_Productos1_Grupo">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Productos1" EntitySet="Productos1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

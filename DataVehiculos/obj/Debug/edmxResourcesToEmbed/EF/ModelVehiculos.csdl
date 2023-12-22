@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Generacion23Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Grupo">
+    <Key>
+      <PropertyRef Name="CveGpo" />
+    </Key>
+    <Property Name="CveGpo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Productos1" Relationship="Self.FK_Productos1_Grupo" FromRole="Grupo" ToRole="Productos1" />
+  </EntityType>
+  <EntityType Name="Productos1">
+    <Key>
+      <PropertyRef Name="Productos" />
+    </Key>
+    <Property Name="Productos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CveGpo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Auto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AñoInicio" Type="Int32" />
+    <Property Name="AñoFin" Type="Int32" />
+    <Property Name="Proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Grupo" Relationship="Self.FK_Productos1_Grupo" FromRole="Productos1" ToRole="Grupo" />
+  </EntityType>
+  <Association Name="FK_Productos1_Grupo">
+    <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+    <End Role="Productos1" Type="Self.Productos1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupo">
+        <PropertyRef Name="CveGpo" />
+      </Principal>
+      <Dependent Role="Productos1">
+        <PropertyRef Name="CveGpo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Generacion23Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Grupo" EntityType="Self.Grupo" />
+    <EntitySet Name="Productos1" EntityType="Self.Productos1" />
+    <AssociationSet Name="FK_Productos1_Grupo" Association="Self.FK_Productos1_Grupo">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Productos1" EntitySet="Productos1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

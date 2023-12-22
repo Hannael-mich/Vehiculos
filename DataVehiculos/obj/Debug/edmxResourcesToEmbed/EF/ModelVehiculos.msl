@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Generacion23ModelStoreContainer" CdmEntityContainer="Generacion23Entities">
+    <EntitySetMapping Name="Grupo">
+      <EntityTypeMapping TypeName="Generacion23Model.Grupo">
+        <MappingFragment StoreEntitySet="Grupo">
+          <ScalarProperty Name="CveGpo" ColumnName="CveGpo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos1">
+      <EntityTypeMapping TypeName="Generacion23Model.Productos1">
+        <MappingFragment StoreEntitySet="Productos1">
+          <ScalarProperty Name="Productos" ColumnName="Productos" />
+          <ScalarProperty Name="CveGpo" ColumnName="CveGpo" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Auto" ColumnName="Auto" />
+          <ScalarProperty Name="AñoInicio" ColumnName="AñoInicio" />
+          <ScalarProperty Name="AñoFin" ColumnName="AñoFin" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
